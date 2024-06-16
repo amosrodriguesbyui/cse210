@@ -6,29 +6,42 @@ class Program
     {
         Console.WriteLine("Hello Prep3 World!");
 
-        Random magicNumber = new Random();
-        int magic = magicNumber.Next(1,11);
+        string playAgain = "yes";
 
-        int guess = 0;
+        while (playAgain == "yes")
+        {            
+            Random magicNumber = new Random();
+            int magic = magicNumber.Next(1,11);
 
-        do
-        {
-            Console.WriteLine("What is your guess?");
-            string guessNumber = Console.ReadLine();
-            guess = int.Parse(guessNumber);
-        
-            if (magic > guess)
+            int guess = -1;
+            int count = 0;
+
+            do
             {
-                Console.WriteLine("Highier");
-            }
-            else if (magic < guess)
-            {
-                Console.WriteLine("Lower");
-            }
-            else
-            {
-                Console.WriteLine("You guess it!");
-            }
-        } while (guess != magic);
+                Console.WriteLine("What is your guess?");
+                string guessNumber = Console.ReadLine();
+                guess = int.Parse(guessNumber);
+
+                count = count + 1;
+            
+                if (magic > guess)
+                {
+                    Console.WriteLine("Highier");
+                }
+                else if (magic < guess)
+                {
+                    Console.WriteLine("Lower");
+                }
+                else
+                {
+                    Console.WriteLine("You guess it!");
+                    Console.WriteLine($"It took you {count} time of guess.");
+                }
+            } while (guess != magic);
+
+            Console.WriteLine("Do you want to play again (yes/no)?");
+            playAgain = Console.ReadLine();
+        }
+        Console.WriteLine("Thanks for playing. Goodbye.");
     }
 }
