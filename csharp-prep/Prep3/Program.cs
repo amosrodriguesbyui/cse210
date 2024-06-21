@@ -11,7 +11,7 @@ class Program
         while (playAgain == "yes")
         {            
             Random magicNumber = new Random();
-            int magic = magicNumber.Next(1,11);
+            int magic = magicNumber.Next(1,100);
 
             int guess = -1;
             int count = 0;
